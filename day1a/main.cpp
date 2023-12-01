@@ -11,18 +11,20 @@ int main(){
     while(getline(f, line)){
         int first = -1;
         int last = -1;
-        for (char c : line){
-            if(isdigit(c)){
-                if(first == -1){
-                    first = c;
-                }
-                last = c;
+        for (int i = 0; i < line.size(); i++){
+            if(isdigit(line[i])){
+                first = line[i] - 48;
+                break;
             }
         }
-        first -= 48;
-        last -= 48;
+        for(int i = line.size()-1; i >= 0; i--){
+            if(isdigit(line[i])){
+                last = line[i] - 48;
+                break;
+            }
+        }
         sum += first*10 + last;
-        // std::cout << first*10 + last << " " << sum << " " << line << std::endl;
+        std::cout << first << " " << last << " " << sum << " " << line << std::endl;
     }
 
     std::cout << sum << std::endl;

@@ -4,6 +4,22 @@
 #include <vector>
 #include <algorithm>
 
+int calcStr(std::string& line, int i, std::vector<std::string>& numStr){
+    int output = -1;
+    if(isdigit(line[i])){
+        output = line[i] - 48;
+    }
+    else{
+        for(int j = 0; j < numStr.size(); j++){
+            if(line.substr(i, numStr[j].size()) == numStr[j]){
+                output = j;
+                break;
+            }
+        }
+    }
+    return output;
+}
+
 int main(){
     std::vector<std::string> numStr = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
     std::fstream f("input.txt");
@@ -13,26 +29,19 @@ int main(){
         int first = -1;
         int last = -1;
         for (int i = 0; i < line.size(); i++){
-            if(isdigit(line[i])){
-                if(first == -1){
-                    first = line[i] - 48;
-                }
-                last = line[i] - 48;
+            first = calcStr(line, i, numStr);
+            if(first != -1){
+                break;
             }
-            else{
-                for(int j = 0; j < numStr.size(); j++){
-                    if(line.substr(i, numStr[j].size()) == numStr[j]){
-                        if(first == -1){
-                            first = j;
-                        }
-                        last = j;
-                        break;
-                    }
-                }
+        }
+        for (int i = line.size()-1; i >= 0; i--){
+            last = calcStr(line, i, numStr);
+            if(last != -1){
+                break;
             }
         }
         sum += first*10 + last;
-        // std::cout << first*10 + last << " " << sum << " " << line << std::endl;
+        std::cout << first << " " << last << " " << sum << " " << line << std::endl;
     }
 
     std::cout << sum << std::endl;
