@@ -20,8 +20,14 @@ int main(){
                 last = line[i] - 48;
             }
             else{
-                for(auto ns : numStr){
-
+                for(int j = 0; j < numStr.size(); j++){
+                    if(line.substr(i, numStr[j].size()) == numStr[j]){
+                        if(first == -1){
+                            first = j;
+                        }
+                        last = j;
+                        break;
+                    }
                 }
             }
         }
