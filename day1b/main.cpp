@@ -32,7 +32,7 @@ int main(){
             }
         }
         sum += first*10 + last;
-        std::cout << first*10 + last << " " << sum << " " << line << std::endl;
+        // std::cout << first*10 + last << " " << sum << " " << line << std::endl;
     }
 
     std::cout << sum << std::endl;
