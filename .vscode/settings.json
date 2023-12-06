@@ -48,6 +48,13 @@
         "cinttypes": "cpp",
         "typeinfo": "cpp",
         "sstream": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "ctime": "cpp",
+        "ratio": "cpp",
+        "semaphore": "cpp",
+        "stop_token": "cpp",
+        "thread": "cpp",
+        "condition_variable": "cpp",
+        "mutex": "cpp"
     }
 }
